@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="事件循环机制JS 是单线程语言，JS 任务分为同步任务和异步任务，同步任务都在主线程上执行，形成一个执行栈，在执行栈中一个任务执行完后才会执行下一个任务。如果遇到异步任务则将异步任务挂起，先执行后面的同步任务，异步任务有了运行结果后会将异步回调放入任务队列中，一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，如果存在将任务队列中的任务放入主线程中执行。异步任务中又有宏任务和微任务[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js进阶">
+<meta property="og:url" content="http://example.com/2022/03/07/js%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="xlong-zh&#39;s blog">
+<meta property="og:description" content="事件循环机制JS 是单线程语言，JS 任务分为同步任务和异步任务，同步任务都在主线程上执行，形成一个执行栈，在执行栈中一个任务执行完后才会执行下一个任务。如果遇到异步任务则将异步任务挂起，先执行后面的同步任务，异步任务有了运行结果后会将异步回调放入任务队列中，一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，如果存在将任务队列中的任务放入主线程中执行。异步任务中又有宏任务和微任务[">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/hrw.jpg">
+<meta property="article:published_time" content="2022-03-07T06:22:44.248Z">
+<meta property="article:modified_time" content="2022-03-07T09:00:55.844Z">
+<meta property="article:author" content="xlong-zh">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/hrw.jpg">
+
+
+<link rel="canonical" href="http://example.com/2022/03/07/js%E8%BF%9B%E9%98%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/07/js%E8%BF%9B%E9%98%B6/","path":"2022/03/07/js进阶/","title":"js进阶"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>js进阶 | xlong-zh's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xlong-zh's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">事件循环机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">闭包的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">闭包的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96"><span class="nav-number">2.2.1.</span> <span class="nav-text">函数柯里化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">高阶函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-this-%E6%8C%87%E5%90%91"><span class="nav-number">3.</span> <span class="nav-text">修改 this 指向</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE"><span class="nav-number">4.</span> <span class="nav-text">原型链</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">4.1.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">4.1.1.</span> <span class="nav-text">new 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF"><span class="nav-number">4.1.2.</span> <span class="nav-text">原型链继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-%E7%BB%A7%E6%89%BF"><span class="nav-number">4.1.3.</span> <span class="nav-text">class 继承</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xlong-zh"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">xlong-zh</p>
+  <div class="site-description" itemprop="description">coder coder coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xlong-zh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/xlong-zh@outlook.com" title="E-Mail → xlong-zh@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/xlong-zh" title="https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank">github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://gitee.com/xlong-zh" title="https:&#x2F;&#x2F;gitee.com&#x2F;xlong-zh" rel="noopener" target="_blank">gitee</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/js%E8%BF%9B%E9%98%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js进阶
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 14:22:44 / 修改时间：17:00:55" itemprop="dateCreated datePublished" datetime="2022-03-07T14:22:44+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="事件循环机制"><a href="#事件循环机制" class="headerlink" title="事件循环机制"></a>事件循环机制</h1><p>JS 是单线程语言，JS 任务分为同步任务和异步任务，同步任务都在主线程上执行，形成一个执行栈，在执行栈中一个任务执行完后才会执行下一个任务。如果遇到异步任务则将异步任务挂起，先执行后面的同步任务，异步任务有了运行结果后会将异步回调放入任务队列中，一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，如果存在将任务队列中的任务放入主线程中执行。异步任务中又有宏任务和微任务[Promise],微任务会先于宏任务执行。<br><img src="/images/hrw.jpg"></p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>闭包就是函数和函数上下文环境的捆绑组合，当函数执行完后，函数中的变量就会被销毁，但是闭包在返回函数的同时将这个函数的上下文环境存储在内存中，可以让内层函数访问到外层函数的变量。</p>
+<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><h3 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">柯里化的作用 =&gt; 1.参数复用 2.解耦</span><br><span class="line">现在需要一个函数fn(reg,rule)传入两个参数，第一个是匹配规则，第二个是要检查的值，</span><br><span class="line">检查传入的值是否符合传入的规则，返回检查结果</span><br><span class="line">*/</span><br><span class="line">//普通函数形式</span><br><span class="line">function regMatch(text,rule)&#123;</span><br><span class="line">    const reg = new RegExp(rule)</span><br><span class="line">    if(reg.test(text)) return true</span><br><span class="line">    return false</span><br><span class="line">&#125;</span><br><span class="line">const isPhone = regMatch(&#x27;13308041085&#x27;,/^1\d&#123;10&#125;$/)</span><br><span class="line"></span><br><span class="line">//柯里化形式</span><br><span class="line">function regMatch(rule)&#123;</span><br><span class="line">    return function(text)&#123;</span><br><span class="line">         const reg = new RegExp(rule)</span><br><span class="line">         if(reg.test(text)) return true</span><br><span class="line">         return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const isPhone = regMatch(/^1\d&#123;10&#125;$/);</span><br><span class="line">const isPhontRsult = isPhone(&#x27;13308041085&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">函数作为参数传或者函数作为返回值被返回的函数叫做高阶函数,可以理解为高阶函数就是函数的加工工厂</span><br><span class="line">*/</span><br><span class="line">//节流（监听鼠标移动时间，鼠标1s内移动1万次，控制只执行10次，100ms执行一次）</span><br><span class="line">function throttle(fn, delay) &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  const _this = this;</span><br><span class="line">  return function (...args) &#123;</span><br><span class="line">    if (!timer) &#123;</span><br><span class="line">      timer = setTimeout(() =&gt; &#123;</span><br><span class="line">        fn.apply(_this, args);</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = null;</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">//防抖（一个按钮，不断的点击，1s内点击100次，控制只执行最后一次的点击事件）</span><br><span class="line">function debounce(fn, delay) &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  const _this = this;</span><br><span class="line">  return function (...args) &#123;</span><br><span class="line">    if (timer !== null) clearTimeout(timer);</span><br><span class="line">    timer = setTimeout(()=&gt;&#123;</span><br><span class="line">      fn.apply(_this,args)</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="修改-this-指向"><a href="#修改-this-指向" class="headerlink" title="修改 this 指向"></a>修改 this 指向</h1><p>obj.myFun.call(db,’成都’,’上海’)；　　 // 德玛 年龄 99 来自 成都去往上海<br>obj.myFun.apply(db,[‘成都’,’上海’]); // 德玛 年龄 99 来自 成都去往上海<br>obj.myFun.bind(db,’成都’,’上海’)(); // 德玛 年龄 99 来自 成都去往上海</p>
+<h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><p>构造函数构造出的实例对象上有<strong>proto</strong>属性，指向构造函数的 prototype，prototype 上是构造函数的公共属性，当访问对象的属性，并且对象上不存在这个属性时就会通过<strong>proto</strong>向上查找构造函数的 prototype 上是否存在这个属性，原型链的作用就是为了实例对象能继承构造函数上的公共属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const a = &#123;name:2&#125;</span><br><span class="line">a.__proto__ === Object.prototype // =&gt; true      实例对象的_proto_ 指向其构造函数的prototype</span><br><span class="line">/**</span><br><span class="line">a这个对象本身没有toString这个属性 但是他的构造函数Object上有toString属性</span><br><span class="line">*/</span><br><span class="line">a.toString()</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="new-关键字"><a href="#new-关键字" class="headerlink" title="new 关键字"></a>new 关键字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function _New(fun) &#123;</span><br><span class="line">        //首先会创建一个新的空对象</span><br><span class="line">        var obj = &#123;&#125;;</span><br><span class="line">        //然后新的空对象的_proto_指向构造函数的prototype成员对象</span><br><span class="line">        obj._proto_ = fun.prototype;</span><br><span class="line">        //创建一个引用对象,并且把构造函数（fun）的this指向引用对象</span><br><span class="line">        var res = fun.call(obj);</span><br><span class="line">        //判断构造函数执行完的结果返回的是不是一个对象，如果是就返回这个对象；如果不是，就返回新创建的对象（obj）</span><br><span class="line">        if (res &amp;&amp; typeof (res) == &#x27;object&#x27; || typeof (res) == &#x27;function&#x27;) &#123;</span><br><span class="line">            return res;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return obj;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">通过原型链继承  实例可以继承[继承对象]的属性和prototype属性</span><br><span class="line">*/</span><br><span class="line">function Parent(name)&#123;</span><br><span class="line">	this.type = &#x27;parent&#x27;;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">function Child(name)&#123;</span><br><span class="line">	this.fill = &#x27;fade&#x27;;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.post = function()&#123; console.log(&#x27;post to child&#x27;) &#125;</span><br><span class="line">Child.prototype = new Parent();</span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line">Child.prototype.get = function()&#123; console.log(&#x27;receive from parent&#x27;) &#125;</span><br><span class="line">let parent = new Parent(&#x27;A&#x27;)</span><br><span class="line">let child = new Child(&#x27;B&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="class-继承"><a href="#class-继承" class="headerlink" title="class 继承"></a>class 继承</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class person &#123;</span><br><span class="line"> constructor()&#123;</span><br><span class="line"> this.kind=&quot;person&quot;</span><br><span class="line"> &#125;</span><br><span class="line"> eat(food)&#123;</span><br><span class="line"> console.log(this.name+&quot; &quot;+food);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class student extends person&#123;</span><br><span class="line"> constructor(name)&#123;</span><br><span class="line"> super();</span><br><span class="line"> this.name=name;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">var martin=new student(&quot;martin&quot;);</span><br><span class="line">console.log(martin.kind); //person</span><br><span class="line">martin.eat(&quot;apple&quot;); //martin apple</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/" rel="prev" title="终端指令">
+                  <i class="fa fa-chevron-left"></i> 终端指令
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/07/ES6/" rel="next" title="ES6">
+                  ES6 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xlong-zh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -20,28 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="categories">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+<meta name="description" content="数据类型转换显式类型转换（强制类型转换）：Number()parseInt()parseFloat() 隐式类型转换：    +        200 + ‘3’        变成字符串    - * &#x2F; %     ‘200’ - 3 变成数字    ++ –          变成数字    &gt; &lt;           数字的比较 、字符串的比较    !    取反">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js基础">
+<meta property="og:url" content="http://example.com/2022/03/07/js%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="xlong-zh&#39;s blog">
-<meta property="og:description" content="categories">
+<meta property="og:description" content="数据类型转换显式类型转换（强制类型转换）：Number()parseInt()parseFloat() 隐式类型转换：    +        200 + ‘3’        变成字符串    - * &#x2F; %     ‘200’ - 3 变成数字    ++ –          变成数字    &gt; &lt;           数字的比较 、字符串的比较    !    取反">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-11T09:30:33.000Z">
-<meta property="article:modified_time" content="2021-11-08T03:05:09.062Z">
+<meta property="article:published_time" content="2022-03-07T02:26:30.203Z">
+<meta property="article:modified_time" content="2022-03-07T08:03:15.936Z">
 <meta property="article:author" content="xlong-zh">
+<meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/categories/">
+<link rel="canonical" href="http://example.com/2022/03/07/js%E5%9F%BA%E7%A1%80/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://example.com/categories/index.html","path":"categories/index.html","title":"分类"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/07/js%E5%9F%BA%E7%A1%80/","path":"2022/03/07/js基础/","title":"js基础"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类 | xlong-zh's blog
-</title>
+<title>js基础 | xlong-zh's blog</title>
   
 
 
@@ -105,7 +105,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -118,6 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">数据类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="nav-number">2.</span> <span class="nav-text">浏览器缓存</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,43 +192,103 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
 
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/js%E5%9F%BA%E7%A1%80/">
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
 
-<h1 class="post-title" itemprop="name headline">分类
-</h1>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          js基础
+        </h1>
 
-<div class="post-meta-container">
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 10:26:30 / 修改时间：16:03:15" itemprop="dateCreated datePublished" datetime="2022-03-07T10:26:30+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
+        </span>
+    </span>
+
+  
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body"><div class="category-all-page">
-  <div class="category-all-title">
-    目前共计 4 个分类
-  </div>
-  <div class="category-all">
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li></ul>
-  </div>
-</div>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><p>显式类型转换（强制类型转换）：<br>Number()<br>parseInt()<br>parseFloat()</p>
+<p>隐式类型转换：<br>    +        200 + ‘3’        变成字符串<br>    - * / %     ‘200’ - 3 变成数字<br>    ++ –          变成数字<br>    &gt; &lt;           数字的比较 、字符串的比较<br>    !    取反       把右边的数据类型转成布尔值<br>    ==</p>
+<h1 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h1><ol>
+<li>localStorage 本地，没有时间限制，关闭浏览器也存在。除非主动删除，否则一直存在</li>
+<li>sessinStorage 阶段，临时保存，当窗口关闭就被删除<br>都是以键值对的形式保存<br>// ————— 方法<br>// 1. 添加 localStorage.setItem(“key”, “value”);<br>// localStorage.setItem(“username”, “zhangsan”);<br>// 2. 获取 localStorage.getItem(“key”);<br>// localStorage.getItem(“username”);<br>// 3. 删除 localStorage.removeItem(“key”);<br>// localStorage.removeItem(“username”);<br>// 4. 清空 localStorage.clear();<br>// localStorage.clear();<br>let store = {<br>set(key, value) {<br>localStorage.setItem(“key”, JSON.stringify(value));<br>},<br>get(key) {<br>return JSON.parse(localStorage.getItem(“key”)) || [];<br>}<br>}</li>
+</ol>
 
-      </div>
-      
-      
-      
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/js/" rel="tag"># js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/07/DOM/" rel="prev" title="DOM">
+                  <i class="fa fa-chevron-left"></i> DOM
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/07/css%E5%B8%B8%E8%A7%84/" rel="next" title="css常规">
+                  css常规 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>

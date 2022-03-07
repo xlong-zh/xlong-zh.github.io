@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="vim一般模式，命令模式，编辑模式按 a，就由一般模式进入编辑模式由编辑模式退回一般模式，Esc 命令模式，以：开头的:q    退出:wq 保存退出:q!    强制退出 （不保存退出）:set nu   显示行号:set nonu  隐藏行号 一般模式下dd     删除一行（剪切）  ctrl+xnum  dd    删除 num 行p   将剪切的内容粘贴到光标所在行下面ctrl+vyy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终端指令">
+<meta property="og:url" content="http://example.com/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="xlong-zh&#39;s blog">
+<meta property="og:description" content="vim一般模式，命令模式，编辑模式按 a，就由一般模式进入编辑模式由编辑模式退回一般模式，Esc 命令模式，以：开头的:q    退出:wq 保存退出:q!    强制退出 （不保存退出）:set nu   显示行号:set nonu  隐藏行号 一般模式下dd     删除一行（剪切）  ctrl+xnum  dd    删除 num 行p   将剪切的内容粘贴到光标所在行下面ctrl+vyy">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-07T03:44:27.266Z">
+<meta property="article:modified_time" content="2022-03-07T04:42:24.198Z">
+<meta property="article:author" content="xlong-zh">
+<meta property="article:tag" content="html">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/","path":"2022/03/07/zd终端指令/","title":"终端指令"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>终端指令 | xlong-zh's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xlong-zh's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vim"><span class="nav-number">1.</span> <span class="nav-text">vim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%EF%BC%8C%E4%BB%A5%EF%BC%9A%E5%BC%80%E5%A4%B4%E7%9A%84"><span class="nav-number">1.1.</span> <span class="nav-text">命令模式，以：开头的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E6%A8%A1%E5%BC%8F%E4%B8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">一般模式下</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B4%E7%90%86"><span class="nav-number"></span> <span class="nav-text">整理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number"></span> <span class="nav-text">指令</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xlong-zh"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">xlong-zh</p>
+  <div class="site-description" itemprop="description">coder coder coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xlong-zh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/xlong-zh@outlook.com" title="E-Mail → xlong-zh@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/xlong-zh" title="https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank">github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://gitee.com/xlong-zh" title="https:&#x2F;&#x2F;gitee.com&#x2F;xlong-zh" rel="noopener" target="_blank">gitee</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          终端指令
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 11:44:27 / 修改时间：12:42:24" itemprop="dateCreated datePublished" datetime="2022-03-07T11:44:27+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>一般模式，命令模式，编辑模式<br>按 a，就由一般模式进入编辑模式<br>由编辑模式退回一般模式，Esc</p>
+<h3 id="命令模式，以：开头的"><a href="#命令模式，以：开头的" class="headerlink" title="命令模式，以：开头的"></a>命令模式，以：开头的</h3><p>:q    退出<br>:wq 保存退出<br>:q!    强制退出 （不保存退出）<br>:set nu   显示行号<br>:set nonu  隐藏行号</p>
+<h3 id="一般模式下"><a href="#一般模式下" class="headerlink" title="一般模式下"></a>一般模式下</h3><p>dd     删除一行（剪切）  ctrl+x<br>num  dd    删除 num 行<br>p   将剪切的内容粘贴到光标所在行下面<br>ctrl+v<br>yy   拷贝一行     ctrl+c<br>num yy  拷贝 num 行<br>u   撤销   undo<br>ctrl+r   恢复   redo<br>gg   定位到第一行<br>shift+g    定位到最后一行<br>num shift+g   定位到 num 行</p>
+<h1 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h1><p>“ / “  ：根目录<br>“ ~ “ ：用户主目录的缩写。例如当前用户为 hello，那么” ~ “展开来就是：/Users/hello<br>“ . “  ：当前目录<br>“..”   ：父目录<br>①. 进入根目录 cd ～<br>②. 返回上一级目录 cd ..<br>③. Ls 显示目录下的详细内容<br>ls   查看当前目录下得内容<br>ls /   查看根目录的内容<br>ls ./   查看当前目录下得内容<br>ls ../   查看父目录下得内容<br>ls ~    查看用户目录的内容（打开终端默认在用户目录下）<br>①. Clear 清屏<br>②. 新建文件夹 mkdir xxx <br>③. 新建问价 touch xxx<br>④. Cd xxx 进入 xxx 的文件夹<br>⑤. 删除 rm 1.txt 删除 1.txt 的文件<br>⑥. rm -rf 456/  删除当前目录下 456 名字的文件夹，删除文件夹的同时，里面的文件统统删除。<br>⑦. vi 1.c  （如果文件存在，则打开这个文件，如果不存在，先创建，再打开）<br>⑧. cp 1.txt 2.txt 将当前目录下的 1.txt 拷贝一份，并放到当前目录下，并命名为 2.txt<br>mv  aaa bbb  将当前目录下得 aaa 文件，移动到当前目录下，并改名为 bbb<br>cp  aaa bbb 将当前目录下得 aaa 文件，拷贝一份，放到当前目录下，并改名为 bbb<br>⑨. pwd  查看当前所在的位置（目录）</p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>“ / “  ：根目录<br>“ ~ “ ：用户主目录的缩写。例如当前用户为 hello，那么” ~ “展开来就是：/Users/hello<br>“ . “  ：当前目录<br>“..”   ：父目录<br>ls 列出当前目录下的子目录和文件<br>快速通过终端命令用 vscode 打开指定文件夹 进入文件夹目录后 .code<br>cd -   回到上一个目录<br>cd ~  回到用户目录(刚打开终端时的目录)<br>list show<br>ls  显示当前目录下的文件内容<br>ls 可以和路径配合使用，用于显示路径下的内容<br>ls 后面如果什么都不加，默认显示当前目录下的内容。<br>ls /  显示跟目录下的内容<br>clear 清空屏幕的内容<br>percent work directary<br>pwd  查看我们所在的目录（位置），刚打开终端的时候，默认在用户目录下。<br>make directory<br>mkdir xxx  在当前目录下，创建一个 xxx 名字的文件夹<br>touch aaa  在当前目录下创建一个 aaa 名字的文件<br>come directory<br>cd xxx  进入 xxx 的文件夹     (Tab 键会自动补齐)<br>remove<br>rm 1.txt  删除名字为 1.txt 的文件<br>rm -rf 456/  删除当前目录下 456 名字的文件夹，删除文件夹的同时，里面的文件统统删除。<br>(方向键上下键，可以翻看历史命令)<br>move<br>mv 1.txt 123.txt 移动+改名，将当前目录的 1.txt 移动到当前目录，并改名为 123.txt<br>cp 1.txt 2.txt 将当前目录下的 1.txt 拷贝一份，并放到当前目录下，并命名为 2.txt<br>vi （vim）<br>vi 1.c  （如果文件存在，则打开这个文件，如果不存在，先创建，再打开）<br>vi 命令有 3 种模式<br>命令模式   （以:打头的命令）<br>:q  退出，（如果文件已经被编辑了，而没有保存的话，是无法退出的）<br>:w  保存<br>:wq  保存退出<br>:q!   不保存退出<br>:set nu       显示行号<br>:set nonu  隐藏行号<br>编辑模式<br>由编辑模式进入一般模式，按 Esc 键<br>一般模式   （一般命令）<br>由一般模式进入编辑模式<br>a,i,o, shift+a,shift+i,shift+o 键<br>dd   删除一行(光标所在的那一行) (剪切)<br>5dd  删除光标下的 5 行<br>p    粘贴<br>yy   复制<br>5yy  复制 5 行<br>u      撤销上一次操作 （undo）<br>ctrl+r   恢复操作     (redo)<br>gg   将光标定位在第一行<br>shift+g 将光标定位到最后一行<br>num shift+g  将光标定位在第 num 行<br>ls   查看当前目录下得内容<br>ls /   查看根目录的内容<br>ls ./   查看当前目录下得内容<br>ls ../   查看父目录下得内容<br>ls ~    查看用户目录的内容（打开终端默认在用户目录下）<br>ls /Users/apple<br>pwd  查看当前所在的位置（目录）<br>cd  目录     进入目录文件夹<br>mkdir   xxx   创建一个名字为 xxx 的文件夹<br>touch  yyy   创建一个名字为 yyy 的文件<br>vi  yyy   如果文件不存在，则创建一个 yyy 的文件，并打开，如果文件存在，则是打开 yyy 文件。<br>rm yyy    删除 yyy 文件<br>rm -rf  xxx  删除 xxx 文件夹<br>mv  aaa bbb  将当前目录下得 aaa 文件，移动到当前目录下，并改名为 bbb<br>cp  aaa bbb 将当前目录下得 aaa 文件，拷贝一份，放到当前目录下，并改名为 bbb</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/07/css%E5%B8%B8%E8%A7%84/" rel="prev" title="css常规">
+                  <i class="fa fa-chevron-left"></i> css常规
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/07/js%E8%BF%9B%E9%98%B6/" rel="next" title="js进阶">
+                  js进阶 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xlong-zh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -129,9 +129,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -142,9 +151,6 @@
       <span class="links-of-author-item">
         <a href="/xlong-zh@outlook.com" title="E-Mail → xlong-zh@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
-  </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
   </div>
 
 
@@ -192,7 +198,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/My-Gallery/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -205,7 +211,599 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/03/My-Gallery/" class="post-title-link" itemprop="url">My Gallery</a>
+          <a href="/2022/03/07/vue/" class="post-title-link" itemprop="url">vue</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 17:02:36 / 修改时间：17:05:00" itemprop="dateCreated datePublished" datetime="2022-03-07T17:02:36+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>Vue 的生命周期就是 Vue 实例从创建到销毁的过程，通过构造函数生成 Vue 实例后，会初始化生命周期和事件，然后触发 beforecreate 钩子函数，接下来 vue 会把通过 Object.defineProperty()将 data 中的数据变成可观测数据，然后触发 created 钩子，此时会将 template 模板编译成 render 函数，然后会触发 beforeMount 钩子函数，之后会将虚拟 dom 生成真实 dom 节点并切挂在 el(容器)上，之后会触发 mounted 钩子函数，在 mounted 钩子中，已经可以拿到并操作真实 dom 节点，当 data 中的数据更新时会触发 beforeUpdate 钩子，新旧 virtualDom 对比后通过 patch 函数重新渲染更新的节点。vue 实例销毁前会触发 beforeDestroy 钩子，销毁后触发 destroyed 钩子，一般在销毁的时候会清除计时器和一些监听事件。</p>
+<h1 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h1><p>Vue 在 created 生命周期前会遍历 data 中的属性，通过 Object.defineProperty()给 data 中的每个数据都添加 get 和 set 属性，当数据被使用时就会触发 get 方法，通知 watcher 记录依赖关系，当数据被修改时会触发 set 方法，wacher 会通知依赖的订阅者修改视图更新数据。</p>
+<h1 id="diff-算法"><a href="#diff-算法" class="headerlink" title="diff 算法"></a>diff 算法</h1><p>vue 在对比虚拟 dom 时会采用同层级对比的策略，同层级的 dom 只会和同层级的 vdom 进行比较，并且只有新旧 vdom 的 key 相同并且选择器相同时，才会进行后续对比，否则直接替换掉节点，不会进行后续对比。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/07/ES6/" class="post-title-link" itemprop="url">ES6</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 16:02:19 / 修改时间：17:12:16" itemprop="dateCreated datePublished" datetime="2022-03-07T16:02:19+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h1><p>var是函数作用域，在函数体内声明的不能在函数体外访问；let和const是块作用域，代码块内声明后不能在代码块外访问，let和const不存在变量提升，通过const声明的变量作为常量，在声明后不能再进行赋值操作；</p>
+<h1 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//解构赋值</span><br><span class="line">let &#123; foo, bar &#125; = &#123; foo: &#x27;aaa&#x27;, bar: &#x27;bbb&#x27; &#125;;</span><br><span class="line">foo // &quot;aaa&quot;</span><br><span class="line">bar // &quot;bbb&quot;</span><br><span class="line">let [x, y] = [1, 2, 3];</span><br><span class="line">x // 1</span><br><span class="line">y // 2</span><br><span class="line">//rest参数</span><br><span class="line">let &#123; foo,...rest &#125; = &#123; foo: &#x27;aaa&#x27;, bar: &#x27;bbb&#x27;,baz:&#x27;baz&#x27; &#125;;</span><br><span class="line">rest // &#123; bar: &#x27;bbb&#x27;,baz:&#x27;baz&#x27; &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//数组合并</span><br><span class="line">const a = [1,2,3,4];</span><br><span class="line">const b = [2,3,4,5];</span><br><span class="line">const d = [...a,...b]; // =&gt;[1, 2, 3, 4, 2, 3, 4, 5]</span><br><span class="line">//对象合并</span><br><span class="line">const o1 = &#123; name:22,age:33,gender:&#x27;male&#x27; &#125;;</span><br><span class="line">const o2 = &#123; age:23,weight:20 &#125;;</span><br><span class="line">const o3 = &#123; ...o1,...o2 &#125;; // =&gt;&#123;name: 22, age: 23, gender: &#x27;male&#x27;, weight: 20&#125; 后会覆盖前</span><br></pre></td></tr></table></figure>
+<h1 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const a = &#x27;zola&#x27;</span><br><span class="line">const b = `this is  $&#123; a &#125;` // =&gt; this is zola</span><br></pre></td></tr></table></figure>
+<h2 id="字符串新增方法"><a href="#字符串新增方法" class="headerlink" title="字符串新增方法"></a>字符串新增方法</h2><h3 id="includes"><a href="#includes" class="headerlink" title="includes"></a>includes</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// includes()：返回布尔值，表示是否找到了参数字符串。</span><br><span class="line">&#x27;MerryChristmas&#x27;.includes(&#x27;mer&#x27;) // =&gt; true</span><br></pre></td></tr></table></figure>
+<h3 id="replaceAll"><a href="#replaceAll" class="headerlink" title="replaceAll"></a>replaceAll</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//replaceAll()方法，可以一次性替换所有匹配,返回新的字符串，不会改变原字符串 (字符串的实例方法replace()只能替换第一个匹配)</span><br><span class="line"> &#x27;MerryChristmas&#x27;.replaceAll(&#x27;r&#x27;,&#x27;x&#x27;) // =&gt;&#x27;MexxyChxistmas&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="正则构造函数"><a href="#正则构造函数" class="headerlink" title="正则构造函数"></a>正则构造函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var regex = new RegExp(&#x27;xyz&#x27;, &#x27;i&#x27;);</span><br><span class="line">// 等价于</span><br><span class="line">var regex = /xyz/i;</span><br></pre></td></tr></table></figure>
+<h1 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h1><h2 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h2> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function log(x, y = &#x27;World&#x27;) &#123;</span><br><span class="line">  		console.log(x, y);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function aa(...r)&#123; console.log(r) &#125; // =&gt;  [1, 2, 3, 4] 可以在参数个数不确定的情况下获取传入的所有参数，代替arguments</span><br></pre></td></tr></table></figure>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const a = ()=&gt;&#123; return &#x27;a&#x27; &#125; //箭头函数没有自己的this上下文，指向函数外层</span><br></pre></td></tr></table></figure>
+<h2 id="try…catch"><a href="#try…catch" class="headerlink" title="try…catch"></a>try…catch</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//JavaScript 语言的try...catch结构，以前明确要求catch命令后面必须跟参数，接受try代码块抛出的错误对象。</span><br><span class="line">try &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125; catch &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="数组的扩展"><a href="#数组的扩展" class="headerlink" title="数组的扩展"></a>数组的扩展</h1><h2 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from"></a>Array.from</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//Array.from 将类数组转换成数组</span><br><span class="line">let arrayLike = &#123;</span><br><span class="line">    &#x27;0&#x27;: &#x27;a&#x27;,</span><br><span class="line">    &#x27;1&#x27;: &#x27;b&#x27;,</span><br><span class="line">    &#x27;2&#x27;: &#x27;c&#x27;,</span><br><span class="line">    length: 3</span><br><span class="line">&#125;;</span><br><span class="line">let arr2 = Array.from(arrayLike); // [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span><br></pre></td></tr></table></figure>
+<h2 id="Array-of"><a href="#Array-of" class="headerlink" title="Array.of"></a>Array.of</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//Array.of()方法用于将一组值，转换为数组。</span><br><span class="line">Array.of(3, 11, 8) // [3,11,8]</span><br></pre></td></tr></table></figure>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//数组实例的find方法，返回找到的第一个符合条件的数组成员，没有找到泽返回undefined</span><br><span class="line">[1, 4, -5, -10].find((n) =&gt; n &lt; 0) // =&gt; -5</span><br></pre></td></tr></table></figure>
+<h2 id="includes-1"><a href="#includes-1" class="headerlink" title="includes"></a>includes</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//Array.prototype.includes方法返回一个布尔值，表示某个数组是否包含给定的值，与字符串的includes方法类似</span><br><span class="line">[1, 2, 3].includes(2)     // true</span><br></pre></td></tr></table></figure>
+<h2 id="flat"><a href="#flat" class="headerlink" title="flat"></a>flat</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">Array.prototype.flat()用于将嵌套的数组“拉平”，变成一维的数组。该方法返回一个新数组，对原数据没有影响。</span><br><span class="line">如果不管有多少层嵌套，都要转成一维数组，可以用Infinity关键字作为参数。</span><br><span class="line">*/</span><br><span class="line">[1, 2, [3, 4]].flat() // =&gt;[1, 2, 3, 4] </span><br><span class="line">[1, [2, [3]]].flat(Infinity) //=&gt;[1, 2, 3]</span><br></pre></td></tr></table></figure>
+<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//Array.prototype.sort() 的排序稳定性</span><br><span class="line">let nums = [2,3,12,33,4,234,16,22,68,12]</span><br><span class="line">let data = nums.sort((a,b)=&gt;&#123;</span><br><span class="line">    console.log(&#123;a,b&#125;)</span><br><span class="line">    return a - b // 从小到大 b-a 从大到小</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="对象新增方法"><a href="#对象新增方法" class="headerlink" title="对象新增方法"></a>对象新增方法</h1><h2 id="Object-keys"><a href="#Object-keys" class="headerlink" title="Object.keys()"></a>Object.keys()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//遍历对象的key</span><br><span class="line">var obj = &#123; foo: &#x27;bar&#x27;, baz: 42 &#125;;</span><br><span class="line">Object.keys(obj)</span><br><span class="line">// [&quot;foo&quot;, &quot;baz&quot;]</span><br></pre></td></tr></table></figure>
+<h2 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a>Object.assign()</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//合并对象，返回合并后的对象</span><br><span class="line">const target = &#123; a: 1 &#125;;</span><br><span class="line">const source1 = &#123; b: 2 &#125;;</span><br><span class="line">const source2 = &#123; c: 3 &#125;;</span><br><span class="line">Object.assign(target, source1, source2);</span><br><span class="line">target // &#123;a:1, b:2, c:3&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Set和Map数据"><a href="#Set和Map数据" class="headerlink" title="Set和Map数据"></a>Set和Map数据</h2><h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。</span><br><span class="line">const d = Array.from(new Set([2,3,12,33,4,234,16,22,68,12]) //Set是类数组)</span><br></pre></td></tr></table></figure>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">Map类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键</span><br><span class="line">*/</span><br><span class="line">const m = new Map();</span><br><span class="line">const o = &#123;p: &#x27;Hello World&#x27;&#125;;</span><br><span class="line">m.set(o, &#x27;content&#x27;)</span><br><span class="line">m.get(o) // &quot;content&quot;</span><br><span class="line">m.has(o) // true</span><br><span class="line">m.delete(o) // true</span><br><span class="line">m.has(o) // false</span><br></pre></td></tr></table></figure>
+<h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//class替代构造函数</span><br><span class="line">class Point &#123;</span><br><span class="line">  constructor(x, y) &#123;</span><br><span class="line">    this.x = x;</span><br><span class="line">    this.y = y;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  toString() &#123;</span><br><span class="line">    return &#x27;(&#x27; + this.x + &#x27;, &#x27; + this.y + &#x27;)&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//class的继承 (extends关键字)</span><br><span class="line">class ColorPoint extends Point &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const promise = new Promise(function(resolve, reject) &#123;</span><br><span class="line">  // ... some code</span><br><span class="line"></span><br><span class="line">  if (/* 异步操作成功 */)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="async"><a href="#async" class="headerlink" title="async"></a>async</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">async function getStockPriceByName(name) &#123;</span><br><span class="line">  const symbol = await getStockSymbol(name);</span><br><span class="line">  const stockPrice = await getStockPrice(symbol);</span><br><span class="line">  return stockPrice;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getStockPriceByName(&#x27;goog&#x27;).then(function (result) &#123;</span><br><span class="line">  console.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="module"><a href="#module" class="headerlink" title="module"></a>module</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//export和import</span><br><span class="line">export const firstName = &#x27;Michael&#x27;;</span><br><span class="line">export const lastName = &#x27;Jackson&#x27;;</span><br><span class="line">export const year = 1958;</span><br><span class="line">import &#123; firstName, lastName, year &#125; from &#x27;./profile.js&#x27;;</span><br><span class="line"></span><br><span class="line">export default &#123; firstName, lastName, year &#125;</span><br><span class="line">import params from &#x27;./profile.js&#x27;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//动态加载</span><br><span class="line">import()函数可以用在任何地方，不仅仅是模块，非模块的脚本也可以使用。它是运行时执行，也就是说，</span><br><span class="line">什么时候运行到这一句，就会加载指定的模块。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/js%E8%BF%9B%E9%98%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/07/js%E8%BF%9B%E9%98%B6/" class="post-title-link" itemprop="url">js进阶</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 14:22:44 / 修改时间：17:00:55" itemprop="dateCreated datePublished" datetime="2022-03-07T14:22:44+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="事件循环机制"><a href="#事件循环机制" class="headerlink" title="事件循环机制"></a>事件循环机制</h1><p>JS 是单线程语言，JS 任务分为同步任务和异步任务，同步任务都在主线程上执行，形成一个执行栈，在执行栈中一个任务执行完后才会执行下一个任务。如果遇到异步任务则将异步任务挂起，先执行后面的同步任务，异步任务有了运行结果后会将异步回调放入任务队列中，一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，如果存在将任务队列中的任务放入主线程中执行。异步任务中又有宏任务和微任务[Promise],微任务会先于宏任务执行。<br><img src="/images/hrw.jpg"></p>
+<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h2><p>闭包就是函数和函数上下文环境的捆绑组合，当函数执行完后，函数中的变量就会被销毁，但是闭包在返回函数的同时将这个函数的上下文环境存储在内存中，可以让内层函数访问到外层函数的变量。</p>
+<h2 id="闭包的应用"><a href="#闭包的应用" class="headerlink" title="闭包的应用"></a>闭包的应用</h2><h3 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">柯里化的作用 =&gt; 1.参数复用 2.解耦</span><br><span class="line">现在需要一个函数fn(reg,rule)传入两个参数，第一个是匹配规则，第二个是要检查的值，</span><br><span class="line">检查传入的值是否符合传入的规则，返回检查结果</span><br><span class="line">*/</span><br><span class="line">//普通函数形式</span><br><span class="line">function regMatch(text,rule)&#123;</span><br><span class="line">    const reg = new RegExp(rule)</span><br><span class="line">    if(reg.test(text)) return true</span><br><span class="line">    return false</span><br><span class="line">&#125;</span><br><span class="line">const isPhone = regMatch(&#x27;13308041085&#x27;,/^1\d&#123;10&#125;$/)</span><br><span class="line"></span><br><span class="line">//柯里化形式</span><br><span class="line">function regMatch(rule)&#123;</span><br><span class="line">    return function(text)&#123;</span><br><span class="line">         const reg = new RegExp(rule)</span><br><span class="line">         if(reg.test(text)) return true</span><br><span class="line">         return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">const isPhone = regMatch(/^1\d&#123;10&#125;$/);</span><br><span class="line">const isPhontRsult = isPhone(&#x27;13308041085&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">函数作为参数传或者函数作为返回值被返回的函数叫做高阶函数,可以理解为高阶函数就是函数的加工工厂</span><br><span class="line">*/</span><br><span class="line">//节流（监听鼠标移动时间，鼠标1s内移动1万次，控制只执行10次，100ms执行一次）</span><br><span class="line">function throttle(fn, delay) &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  const _this = this;</span><br><span class="line">  return function (...args) &#123;</span><br><span class="line">    if (!timer) &#123;</span><br><span class="line">      timer = setTimeout(() =&gt; &#123;</span><br><span class="line">        fn.apply(_this, args);</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = null;</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">//防抖（一个按钮，不断的点击，1s内点击100次，控制只执行最后一次的点击事件）</span><br><span class="line">function debounce(fn, delay) &#123;</span><br><span class="line">  let timer = null;</span><br><span class="line">  const _this = this;</span><br><span class="line">  return function (...args) &#123;</span><br><span class="line">    if (timer !== null) clearTimeout(timer);</span><br><span class="line">    timer = setTimeout(()=&gt;&#123;</span><br><span class="line">      fn.apply(_this,args)</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="修改-this-指向"><a href="#修改-this-指向" class="headerlink" title="修改 this 指向"></a>修改 this 指向</h1><p>obj.myFun.call(db,’成都’,’上海’)；　　 // 德玛 年龄 99 来自 成都去往上海<br>obj.myFun.apply(db,[‘成都’,’上海’]); // 德玛 年龄 99 来自 成都去往上海<br>obj.myFun.bind(db,’成都’,’上海’)(); // 德玛 年龄 99 来自 成都去往上海</p>
+<h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><p>构造函数构造出的实例对象上有<strong>proto</strong>属性，指向构造函数的 prototype，prototype 上是构造函数的公共属性，当访问对象的属性，并且对象上不存在这个属性时就会通过<strong>proto</strong>向上查找构造函数的 prototype 上是否存在这个属性，原型链的作用就是为了实例对象能继承构造函数上的公共属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const a = &#123;name:2&#125;</span><br><span class="line">a.__proto__ === Object.prototype // =&gt; true      实例对象的_proto_ 指向其构造函数的prototype</span><br><span class="line">/**</span><br><span class="line">a这个对象本身没有toString这个属性 但是他的构造函数Object上有toString属性</span><br><span class="line">*/</span><br><span class="line">a.toString()</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="new-关键字"><a href="#new-关键字" class="headerlink" title="new 关键字"></a>new 关键字</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function _New(fun) &#123;</span><br><span class="line">        //首先会创建一个新的空对象</span><br><span class="line">        var obj = &#123;&#125;;</span><br><span class="line">        //然后新的空对象的_proto_指向构造函数的prototype成员对象</span><br><span class="line">        obj._proto_ = fun.prototype;</span><br><span class="line">        //创建一个引用对象,并且把构造函数（fun）的this指向引用对象</span><br><span class="line">        var res = fun.call(obj);</span><br><span class="line">        //判断构造函数执行完的结果返回的是不是一个对象，如果是就返回这个对象；如果不是，就返回新创建的对象（obj）</span><br><span class="line">        if (res &amp;&amp; typeof (res) == &#x27;object&#x27; || typeof (res) == &#x27;function&#x27;) &#123;</span><br><span class="line">            return res;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return obj;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">通过原型链继承  实例可以继承[继承对象]的属性和prototype属性</span><br><span class="line">*/</span><br><span class="line">function Parent(name)&#123;</span><br><span class="line">	this.type = &#x27;parent&#x27;;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">function Child(name)&#123;</span><br><span class="line">	this.fill = &#x27;fade&#x27;;</span><br><span class="line">  this.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.post = function()&#123; console.log(&#x27;post to child&#x27;) &#125;</span><br><span class="line">Child.prototype = new Parent();</span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line">Child.prototype.get = function()&#123; console.log(&#x27;receive from parent&#x27;) &#125;</span><br><span class="line">let parent = new Parent(&#x27;A&#x27;)</span><br><span class="line">let child = new Child(&#x27;B&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="class-继承"><a href="#class-继承" class="headerlink" title="class 继承"></a>class 继承</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class person &#123;</span><br><span class="line"> constructor()&#123;</span><br><span class="line"> this.kind=&quot;person&quot;</span><br><span class="line"> &#125;</span><br><span class="line"> eat(food)&#123;</span><br><span class="line"> console.log(this.name+&quot; &quot;+food);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class student extends person&#123;</span><br><span class="line"> constructor(name)&#123;</span><br><span class="line"> super();</span><br><span class="line"> this.name=name;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">var martin=new student(&quot;martin&quot;);</span><br><span class="line">console.log(martin.kind); //person</span><br><span class="line">martin.eat(&quot;apple&quot;); //martin apple</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">终端指令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 11:44:27 / 修改时间：12:42:24" itemprop="dateCreated datePublished" datetime="2022-03-07T11:44:27+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>一般模式，命令模式，编辑模式<br>按 a，就由一般模式进入编辑模式<br>由编辑模式退回一般模式，Esc</p>
+<h3 id="命令模式，以：开头的"><a href="#命令模式，以：开头的" class="headerlink" title="命令模式，以：开头的"></a>命令模式，以：开头的</h3><p>:q    退出<br>:wq 保存退出<br>:q!    强制退出 （不保存退出）<br>:set nu   显示行号<br>:set nonu  隐藏行号</p>
+<h3 id="一般模式下"><a href="#一般模式下" class="headerlink" title="一般模式下"></a>一般模式下</h3><p>dd     删除一行（剪切）  ctrl+x<br>num  dd    删除 num 行<br>p   将剪切的内容粘贴到光标所在行下面<br>ctrl+v<br>yy   拷贝一行     ctrl+c<br>num yy  拷贝 num 行<br>u   撤销   undo<br>ctrl+r   恢复   redo<br>gg   定位到第一行<br>shift+g    定位到最后一行<br>num shift+g   定位到 num 行</p>
+<h1 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h1><p>“ / “  ：根目录<br>“ ~ “ ：用户主目录的缩写。例如当前用户为 hello，那么” ~ “展开来就是：/Users/hello<br>“ . “  ：当前目录<br>“..”   ：父目录<br>①. 进入根目录 cd ～<br>②. 返回上一级目录 cd ..<br>③. Ls 显示目录下的详细内容<br>ls   查看当前目录下得内容<br>ls /   查看根目录的内容<br>ls ./   查看当前目录下得内容<br>ls ../   查看父目录下得内容<br>ls ~    查看用户目录的内容（打开终端默认在用户目录下）<br>①. Clear 清屏<br>②. 新建文件夹 mkdir xxx <br>③. 新建问价 touch xxx<br>④. Cd xxx 进入 xxx 的文件夹<br>⑤. 删除 rm 1.txt 删除 1.txt 的文件<br>⑥. rm -rf 456/  删除当前目录下 456 名字的文件夹，删除文件夹的同时，里面的文件统统删除。<br>⑦. vi 1.c  （如果文件存在，则打开这个文件，如果不存在，先创建，再打开）<br>⑧. cp 1.txt 2.txt 将当前目录下的 1.txt 拷贝一份，并放到当前目录下，并命名为 2.txt<br>mv  aaa bbb  将当前目录下得 aaa 文件，移动到当前目录下，并改名为 bbb<br>cp  aaa bbb 将当前目录下得 aaa 文件，拷贝一份，放到当前目录下，并改名为 bbb<br>⑨. pwd  查看当前所在的位置（目录）</p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p>“ / “  ：根目录<br>“ ~ “ ：用户主目录的缩写。例如当前用户为 hello，那么” ~ “展开来就是：/Users/hello<br>“ . “  ：当前目录<br>“..”   ：父目录<br>ls 列出当前目录下的子目录和文件<br>快速通过终端命令用 vscode 打开指定文件夹 进入文件夹目录后 .code<br>cd -   回到上一个目录<br>cd ~  回到用户目录(刚打开终端时的目录)<br>list show<br>ls  显示当前目录下的文件内容<br>ls 可以和路径配合使用，用于显示路径下的内容<br>ls 后面如果什么都不加，默认显示当前目录下的内容。<br>ls /  显示跟目录下的内容<br>clear 清空屏幕的内容<br>percent work directary<br>pwd  查看我们所在的目录（位置），刚打开终端的时候，默认在用户目录下。<br>make directory<br>mkdir xxx  在当前目录下，创建一个 xxx 名字的文件夹<br>touch aaa  在当前目录下创建一个 aaa 名字的文件<br>come directory<br>cd xxx  进入 xxx 的文件夹     (Tab 键会自动补齐)<br>remove<br>rm 1.txt  删除名字为 1.txt 的文件<br>rm -rf 456/  删除当前目录下 456 名字的文件夹，删除文件夹的同时，里面的文件统统删除。<br>(方向键上下键，可以翻看历史命令)<br>move<br>mv 1.txt 123.txt 移动+改名，将当前目录的 1.txt 移动到当前目录，并改名为 123.txt<br>cp 1.txt 2.txt 将当前目录下的 1.txt 拷贝一份，并放到当前目录下，并命名为 2.txt<br>vi （vim）<br>vi 1.c  （如果文件存在，则打开这个文件，如果不存在，先创建，再打开）<br>vi 命令有 3 种模式<br>命令模式   （以:打头的命令）<br>:q  退出，（如果文件已经被编辑了，而没有保存的话，是无法退出的）<br>:w  保存<br>:wq  保存退出<br>:q!   不保存退出<br>:set nu       显示行号<br>:set nonu  隐藏行号<br>编辑模式<br>由编辑模式进入一般模式，按 Esc 键<br>一般模式   （一般命令）<br>由一般模式进入编辑模式<br>a,i,o, shift+a,shift+i,shift+o 键<br>dd   删除一行(光标所在的那一行) (剪切)<br>5dd  删除光标下的 5 行<br>p    粘贴<br>yy   复制<br>5yy  复制 5 行<br>u      撤销上一次操作 （undo）<br>ctrl+r   恢复操作     (redo)<br>gg   将光标定位在第一行<br>shift+g 将光标定位到最后一行<br>num shift+g  将光标定位在第 num 行<br>ls   查看当前目录下得内容<br>ls /   查看根目录的内容<br>ls ./   查看当前目录下得内容<br>ls ../   查看父目录下得内容<br>ls ~    查看用户目录的内容（打开终端默认在用户目录下）<br>ls /Users/apple<br>pwd  查看当前所在的位置（目录）<br>cd  目录     进入目录文件夹<br>mkdir   xxx   创建一个名字为 xxx 的文件夹<br>touch  yyy   创建一个名字为 yyy 的文件<br>vi  yyy   如果文件不存在，则创建一个 yyy 的文件，并打开，如果文件存在，则是打开 yyy 文件。<br>rm yyy    删除 yyy 文件<br>rm -rf  xxx  删除 xxx 文件夹<br>mv  aaa bbb  将当前目录下得 aaa 文件，移动到当前目录下，并改名为 bbb<br>cp  aaa bbb 将当前目录下得 aaa 文件，拷贝一份，放到当前目录下，并改名为 bbb</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/css%E5%B8%B8%E8%A7%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/07/css%E5%B8%B8%E8%A7%84/" class="post-title-link" itemprop="url">css常规</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 10:27:03 / 修改时间：16:03:15" itemprop="dateCreated datePublished" datetime="2022-03-07T10:27:03+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>&amp;nbsp 识别为一个空格 &amp;lt &amp;gt 大小于符号 %copy @</p>
+<h1 id="文本溢出"><a href="#文本溢出" class="headerlink" title="文本溢出"></a>文本溢出</h1><h2 id="多行文本溢出："><a href="#多行文本溢出：" class="headerlink" title="多行文本溢出："></a>多行文本溢出：</h2><p>word-break: break-all;<br>text-overflow: ellipsis;<br>display: -webkit-box; /** 对象作为伸缩盒子模型显示 <strong>/<br>-webkit-box-orient: vertical; /</strong> 设置或检索伸缩盒对象的子元素的排列方式 <strong>/<br>-webkit-line-clamp: 2; /</strong> 显示的行数 <strong>/<br>overflow: hidden; /</strong> 隐藏超出的内容 **/</p>
+<h2 id="单行文本溢出："><a href="#单行文本溢出：" class="headerlink" title="单行文本溢出："></a>单行文本溢出：</h2><p>overflow: hidden;<br>text-overflow:ellipsis;<br>white-space: nowrap;</p>
+<h1 id="一些实现功能的语法"><a href="#一些实现功能的语法" class="headerlink" title="一些实现功能的语法"></a>一些实现功能的语法</h1><ol>
+<li>针对节点新增 class 并且不覆盖原有 clas<br>item.classList.add(“”);</li>
+<li>针对节点删除固定 class 并且不影响原有 clas<br>item.classList.remove(“”);</li>
+<li>判断一个节点是否有某个 class 属性<br>item.classList.contains(“red”)<br>classList.toggle 是有这个类就删除 没有就添加</li>
+</ol>
+<h1 id="background-简写顺序"><a href="#background-简写顺序" class="headerlink" title="background 简写顺序"></a>background 简写顺序</h1><p>background-color background-image background-repeat background-attachment background-position</p>
+<h1 id="rem-适配方案"><a href="#rem-适配方案" class="headerlink" title="rem 适配方案"></a>rem 适配方案</h1><p>window.onload = function () {<br>            /<em>720 代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100 代表换算比例，这里写 100 是<br>               为了以后好算,比如，你测量的一个宽度是 100px,就可以写为 1rem,以及 1px=0.01rem 等等</em>/<br>            getRem(720, 100)<br>        };<br>        window.onresize = function () {<br>            getRem(720, 100)<br>        };<br>        function getRem(pwidth, prem) {<br>            var html = document.getElementsByTagName(“html”)[0];<br>            var oWidth = document.body.clientWidth || document.documentElement.clientWidth;<br>            html.style.fontSize = oWidth / pwidth * prem + “px”;<br>        }</p>
+<h1 id="1-像素边框"><a href="#1-像素边框" class="headerlink" title="1 像素边框"></a>1 像素边框</h1><p><img src="/images/yxsbk.jpg"></p>
+<h1 id="裁剪属性"><a href="#裁剪属性" class="headerlink" title="裁剪属性"></a>裁剪属性</h1><p>图片裁剪为菱形<br>mg {<br>clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);<br>}</p>
+<h1 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h1><p>.clearfix:after{/<em>伪元素是行内元素 正常浏览器清除浮动方法</em>/<br>content: “”;<br> display: block;<br>height: 0;<br>clear:both;<br>visibility: hidden;<br>}<br>.clearfix{<br>*zoom: 1;/*ie6 清除浮动的方式 <em>号只有 IE6-IE7 执行，其他浏览器不执行</em>/<br>}</p>
+<h1 id="浏览器响应式布局"><a href="#浏览器响应式布局" class="headerlink" title="浏览器响应式布局"></a>浏览器响应式布局</h1><p>1、em 具有继承性 浏览器文字默认 16px 1em=16px<br>2@media 属性「媒体查询」，称为响应式布局 1)语法 @media screen and（max-width：1000px；）<br>2）如果尺寸样式样式很多，需要不同的 css 去外联，此时需要在引用的时候添加判断条件，以免浏览器以此读取 css 样式，语法：<link rel="stylesheet" href="./max1000.css" media="sceren and (max-width:1000px)"></p>
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><p>1、font-size:定义字符框高度（不要写奇数）可以继承 有预设值 尽量大于 12 不要有小数点<br>2、font-weight:加粗字体 可以定义属性值为 bold ，也可以为数值<br>3、font-style：控制文字倾斜 normal 为不倾斜 italic 为倾斜<br>4、letter-spacing:10px; 文字的间隙为 10 个像素 字符和字符之间<br>5、word-spacing：xx px；词间距 通过空格键去识别<br>5、text-indent:xx px;首行缩进 em px<br>6、font-family：“宋体”，“黑体”；（谨慎使用 版权问题）</p>
+<h1 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h1><p>1、border-radius 设置圆形边框<br>2、background-img 背景图片<br>3、background-repeat 设置图片重复方式 实现自适应？ 见第五条<br>4、background-position 可以取 xy 的值 也可以取 left right bottom middle<br>5、background-size：（contain）/（cover）。数字 数字。 100% auto<br>6、background-attachment：fixed；背景图片固定化不动<br>7、bgc 的简写顺序：颜色 路径 平铺方式 位置<br>8、background：linear-gradient（颜色 1 颜色 2）/（to right 颜色 1 颜色 2）实现渐变效果<br>9、background-color{ 声明颜色后尾部加一个数字 是透明度 0.5 代表 50%}透明度<br>10、box-shadow：5px 10px 10px 颜色。 盒子阴影 模糊程度 外延【x-y】 颜色 阴影不占像素<br>11、text-shadow：与 boxshadow 写法一样 没有外延<br>12、display：none； visibility:hidden;</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/js%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/07/js%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">js基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 10:26:30 / 修改时间：16:03:15" itemprop="dateCreated datePublished" datetime="2022-03-07T10:26:30+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/js/" itemprop="url" rel="index"><span itemprop="name">js</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><p>显式类型转换（强制类型转换）：<br>Number()<br>parseInt()<br>parseFloat()</p>
+<p>隐式类型转换：<br>    +        200 + ‘3’        变成字符串<br>    - * / %     ‘200’ - 3 变成数字<br>    ++ –          变成数字<br>    &gt; &lt;           数字的比较 、字符串的比较<br>    !    取反       把右边的数据类型转成布尔值<br>    ==</p>
+<h1 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h1><ol>
+<li>localStorage 本地，没有时间限制，关闭浏览器也存在。除非主动删除，否则一直存在</li>
+<li>sessinStorage 阶段，临时保存，当窗口关闭就被删除<br>都是以键值对的形式保存<br>// ————— 方法<br>// 1. 添加 localStorage.setItem(“key”, “value”);<br>// localStorage.setItem(“username”, “zhangsan”);<br>// 2. 获取 localStorage.getItem(“key”);<br>// localStorage.getItem(“username”);<br>// 3. 删除 localStorage.removeItem(“key”);<br>// localStorage.removeItem(“username”);<br>// 4. 清空 localStorage.clear();<br>// localStorage.clear();<br>let store = {<br>set(key, value) {<br>localStorage.setItem(“key”, JSON.stringify(value));<br>},<br>get(key) {<br>return JSON.parse(localStorage.getItem(“key”)) || [];<br>}<br>}</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/07/DOM/" class="post-title-link" itemprop="url">DOM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 10:25:58 / 修改时间：17:13:16" itemprop="dateCreated datePublished" datetime="2022-03-07T10:25:58+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><p>● 新的语义元素，比如 <header>, <footer>, <article>, and <section>。<br>● 新的表单控件，比如数字、日期、时间、日历和滑块。<br>● 强大的图像支持（借由 <canvas> 和 <svg>）<br>● 强大的多媒体支持（借由 <video> 和 <audio>）<br>● 强大的新 API，比如用本地存储取代 cookie。<br>● WebSocket</p>
+<h1 id="块元素"><a href="#块元素" class="headerlink" title="块元素"></a>块元素</h1><p>div、p、nav、aside、header、footer、section、article、ul-li、address 等</p>
+<ol>
+<li>独霸一行，总是在新行上开始</li>
+<li>宽度缺省是它父级元素的 100%，除非设定一个宽度</li>
+<li>高度、行高、外边距、内边距都可以设置<br>可以容纳其他内联元素或者其他块元素</li>
+</ol>
+<h1 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h1><p>行内元素最常使用的就是 span，其他的只在特定功能下使用，修饰字体<b>和<i>标签，还有<sub>和<sup>这两个标签可以直接做出平方的效果，而不需要类似移动属性的帮助，很实用。<br>行内元素特征：<br>(1)设置宽高无效<br>(2)对 margin 仅设置左右方向有效，上下无效；padding 设置上下左右都有效，即会撑大空间<br>(3)不会自动进行换行</p>
+<h1 id="api"><a href="#api" class="headerlink" title="api"></a>api</h1><p>nodeType 辨别类型<br>childNodes 会包含文档和空子节点<br>Children 只找元素子节点（非标属性，但都支持）<br>parentNode 父节点<br>parentElement 父元素节点（IE9 以下不兼容）<br>nextElementSibling 下个兄弟节点<br>previousElementSibling 上个兄弟节点<br>firstElementChild 第一个子节点<br>lastElementChild 最后一个子节点</p>
+<p>//创建元素<br>document.createElement(‘标签的名字’);<br>//插入元素：（向父级末尾添加一个元素）<br>parentNode.appendChild(childNode)<br>//插入元素：（向父级中的某个元素前插入元素）<br>parentNode.insertBefore(新添加的元素,已有的元素)<br>//删除节点:<br>父级.removeChild(指定的子节点)<br>//替换节点:<br>父级.replaceChild(要替换成什么,谁被替换)    <br>//克隆节点:<br>元素.cloneNode()<br>(有参数，默认为 false)，true 可以克隆该元素下的所有子节点；<br>事件是不会被克隆的！！！</p>
+<p>//获取元素行间的属性<br>elem.getAttribute(‘key’)<br>//设置元素的行间属性<br>elem.setAttribute(‘key’,’value’)  <br>//删除元素的行间属性<br>elem.removeAttribute(‘key’)<br>Eg: <div index='1'></div></p>
+<p>//最近的有定位属性的祖先节点，默认为 body<br>offsetParent<br>//左外边框到有定位父级的左内边框的距离<br>offsetLeft<br>//上外边框到有定位父级的上内边框的距离<br>offsetTop<br>//获取元素的宽高（加 padding，不计算边框）<br>elem.clientWidth/ elem.clientHeight     <br>//获取元素的宽高（加 padding，计算边框）    <br>elem.offsetWidth/ elem.offsetHeight<br>//可视区的宽高：<br>document.documentElement.clientWidth/<br>document.documentElement.clientHeight</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/03/BOM/" class="post-title-link" itemprop="url">BOM</a>
         </h2>
 
         <div class="post-meta-container">
@@ -223,142 +821,16 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-08 11:05:09" itemprop="dateModified" datetime="2021-11-08T11:05:09+08:00">2021-11-08</time>
+        <time title="修改时间：2022-03-07 17:05:00" itemprop="dateModified" datetime="2022-03-07T17:05:00+08:00">2022-03-07</time>
       </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>My-Gallery</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/post-title-with-whitespace/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="xlong-zh">
-      <meta itemprop="description" content="coder coder coder">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xlong-zh's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/03/post-title-with-whitespace/" class="post-title-link" itemprop="url">post title with whitespace</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
+        <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-11-03 15:05:26" itemprop="dateCreated datePublished" datetime="2021-11-03T15:05:26+08:00">2021-11-03</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-08 11:05:09" itemprop="dateModified" datetime="2021-11-08T11:05:09+08:00">2021-11-08</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>post-title-with-whitespace</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="xlong-zh">
-      <meta itemprop="description" content="coder coder coder">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xlong-zh's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/11/03/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-11-03 11:46:18" itemprop="dateCreated datePublished" datetime="2021-11-03T11:46:18+08:00">2021-11-03</time>
     </span>
 
   
@@ -371,19 +843,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="浏览器渲染机制"><a href="#浏览器渲染机制" class="headerlink" title="浏览器渲染机制"></a>浏览器渲染机制</h2><h3 id="渲染机制"><a href="#渲染机制" class="headerlink" title="渲染机制"></a>渲染机制</h3><p>先解析 html 生成 dom 树，再解析 css 生成 css 树，将 dom 和 css 树结合生成 render 树，开始回流解析 render 树，获取每个节点的尺寸和位置信息，根据获取的信息开始重绘将页面渲染到浏览器中；</p>
+<h3 id="重绘和回流"><a href="#重绘和回流" class="headerlink" title="重绘和回流"></a>重绘和回流</h3><h4 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h4><p>DOM 节点的样式信息(颜色背景等)发生改变时，浏览器会重新渲染 dom 节点，这个过程叫做重绘；</p>
+<h4 id="回流"><a href="#回流" class="headerlink" title="回流"></a>回流</h4><p>DOM 节点的位置信息和尺寸信息发生改变时，浏览器会通过重新计算 render 树获取节点的尺寸和位置信息，这个过程就叫回流；</p>
+<h4 id="重绘和回流的关系和优化"><a href="#重绘和回流的关系和优化" class="headerlink" title="重绘和回流的关系和优化"></a>重绘和回流的关系和优化</h4><p>回流一定会发生重绘，重绘不一定会导致回流。回流的开销要大于重绘，所以要尽可能避免多次发生回流，避免操作 dom 时频繁的改变元素的尺寸和位置信息，可以通过修改 class 的形式，一次性修改完毕，在动态生成 dom 节点的时候，也可以拼接好 html 后再做 dom 替换。使用 resize、scroll 时进行防抖和节流处理，这两者会直接导致回流。</p>
+<h1 id="bgc"><a href="#bgc" class="headerlink" title="bgc"></a>bgc</h1><p><img src="/images/bfc.jpg"></p>
+<h1 id="事件绑定多个函数（兼容）："><a href="#事件绑定多个函数（兼容）：" class="headerlink" title="事件绑定多个函数（兼容）："></a>事件绑定多个函数（兼容）：</h1><p>function bind(obj, evname(事件名称), fn(事件函数)) {<br>    if (obj.addEventListener) {<br>        obj.addEventListener(evname, fn, false(是否捕获));<br>    } else {<br>        obj.attachEvent(‘on’ + evname, function() {<br>            fn.call(obj);<br>        });<br>    }<br>}<br>//是否捕获 : 默认是 false； false:冒泡 true：捕获</p>
+<h2 id="事件绑定形式的取消"><a href="#事件绑定形式的取消" class="headerlink" title="事件绑定形式的取消"></a>事件绑定形式的取消</h2><p>Btn.onclick=null //普通绑定<br>ie : obj.detachEvent(事件名称，事件函数);<br>标准 : obj.removeEventListener(事件名称，事件函数，是否捕获);</p>
+<p>备注：<br>ie：obj.attachEvent(事件名称，事件函数);<br>    1.没有捕获<br>    2.事件名称有 on<br>    3.事件函数执行的顺序：标准 ie-》正序 非标准 ie-》倒序<br>    4.this 指向 window<br>标准：obj.addEventListener(事件名称，事件函数，是否捕获);<br>    1.有捕获<br>    2.事件名称没有 on<br>    3.事件执行的顺序是正序<br>    4.this 触发该事件的对象</p>
+<h1 id="api"><a href="#api" class="headerlink" title="api"></a>api</h1><p>window.navigator.userAgent –&gt; 浏览器信息<br>window.location –&gt;浏览器地址信息<br>window.location.href:url<br>window.location.search:url –&gt;?后面的内容<br>window.location.hash:url –&gt;#后面的内容</p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>obj.focus() 给指定的元素设置焦点<br>obj.blur() 取消指定元素的焦点<br>obj.select() 选择指定元素里面的文本内容<br>Onfocus 当元素获取到焦点的时候触发<br>onblur 当元素失去焦点的时候触发<br>oncontextmenu 右键菜单事件，当环境菜单显示出来时触发<br>onscroll 当滚动条滚动的时候触发<br>Onresize 当窗口大小发生改变的时候出发<br>onkeydown 当键盘按键按下的时候触发<br>onkeyup 当键盘按键抬起的时候触发<br>event.keyCode 数字类型 键盘按键的值 键值<br>ctrlKey,shiftKey,altKey 布尔值，当一个事件发生的时候，如果 ctrl/shift/alt 是按下的状态，返回 true，否则返回 false</p>
+<h1 id="当一个事件发生的时候，鼠标到页面可视区的距离"><a href="#当一个事件发生的时候，鼠标到页面可视区的距离" class="headerlink" title="当一个事件发生的时候，鼠标到页面可视区的距离"></a>当一个事件发生的时候，鼠标到页面可视区的距离</h1><p>clientX[X] clientX[Y]</p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层 window.事件冒泡机制</p>
+<h2 id="阻止冒泡-当前要阻止冒泡的事件函数中调用"><a href="#阻止冒泡-当前要阻止冒泡的事件函数中调用" class="headerlink" title="阻止冒泡: 当前要阻止冒泡的事件函数中调用"></a>阻止冒泡: 当前要阻止冒泡的事件函数中调用</h2><p>event.stopPropagation() //停止冒泡<br>event.cancelBubble = true; ie 低版本</p>
+<h2 id="事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；"><a href="#事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；" class="headerlink" title="事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；"></a>事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；</h2><p>阻止默认行为：return false;<br>return false 阻止的是 obj.on 事件名称=fn 所触发的默认行为；<br>addEventListener 绑定的事件需要通过 event 下面的 preventDefault();<br>ie 低版本阻止事件默认行为：event.returnvalue=false<br>eg:<br>if (ev.preventDefault) {<br>            ev.preventDefault();<br>        }<br>return false;</p>
+<h2 id="小计"><a href="#小计" class="headerlink" title="小计"></a>小计</h2><p>1、event.stopPropagation() //停止冒泡<br>2、IE 低版本事件对象 window.event 停止冒泡 event.cancelBubble=true;<br>3、阻止 a 标签跳转 //阻止事件默认行为 event.preventDefault();<br>4、ie 低版本阻止事件默认行为 event.returnvalue=false</p>
+<h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><p>将事件绑定在祖先元素身上的方式被称为事件委托<br>//原理 利用冒泡的机制，只指定一个事件处理函数就可以管理一类事件，把具体子节点上发生的事情交给更大范围去处理<br>//什么时候使用：子级数量很多的时候 子级动态生成的时候<br>//写法：event.target.nodeName==?<br>event.target.id==?<br>event.target.className==?</p>
+<h1 id="鼠标滚动事件的区别"><a href="#鼠标滚动事件的区别" class="headerlink" title="鼠标滚动事件的区别"></a>鼠标滚动事件的区别</h1><p>ie/chrome : onmousewheel<br>        event.wheelDelta<br>             上：120<br>             下：-120<br>firefox : DOMMouseScroll 必须用 addEventListener<br>        event.detail<br>             上：-3<br>             下：3</p>
 
       
     </div>
@@ -412,7 +888,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

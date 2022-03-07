@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="BOM浏览器渲染机制渲染机制先解析 html 生成 dom 树，再解析 css 生成 css 树，将 dom 和 css 树结合生成 render 树，开始回流解析 render 树，获取每个节点的尺寸和位置信息，根据获取的信息开始重绘将页面渲染到浏览器中； 重绘和回流重绘DOM 节点的样式信息(颜色背景等)发生改变时，浏览器会重新渲染 dom 节点，这个过程叫做重绘； 回流DOM 节点的位置信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOM">
+<meta property="og:url" content="http://example.com/2021/11/03/BOM/index.html">
+<meta property="og:site_name" content="xlong-zh&#39;s blog">
+<meta property="og:description" content="BOM浏览器渲染机制渲染机制先解析 html 生成 dom 树，再解析 css 生成 css 树，将 dom 和 css 树结合生成 render 树，开始回流解析 render 树，获取每个节点的尺寸和位置信息，根据获取的信息开始重绘将页面渲染到浏览器中； 重绘和回流重绘DOM 节点的样式信息(颜色背景等)发生改变时，浏览器会重新渲染 dom 节点，这个过程叫做重绘； 回流DOM 节点的位置信息">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/bfc.jpg">
+<meta property="article:published_time" content="2021-11-03T07:14:02.463Z">
+<meta property="article:modified_time" content="2022-03-07T09:05:00.186Z">
+<meta property="article:author" content="xlong-zh">
+<meta property="article:tag" content="html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/bfc.jpg">
+
+
+<link rel="canonical" href="http://example.com/2021/11/03/BOM/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/11/03/BOM/","path":"2021/11/03/BOM/","title":"BOM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BOM | xlong-zh's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xlong-zh's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM"><span class="nav-number">1.</span> <span class="nav-text">BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器渲染机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">渲染机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81"><span class="nav-number">1.1.2.</span> <span class="nav-text">重绘和回流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E7%BB%98"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">重绘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%B5%81"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">回流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E7%BB%98%E5%92%8C%E5%9B%9E%E6%B5%81%E7%9A%84%E5%85%B3%E7%B3%BB%E5%92%8C%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">重绘和回流的关系和优化</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bgc"><span class="nav-number">2.</span> <span class="nav-text">bgc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%A4%9A%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%88%E5%85%BC%E5%AE%B9%EF%BC%89%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">事件绑定多个函数（兼容）：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%BD%A2%E5%BC%8F%E7%9A%84%E5%8F%96%E6%B6%88"><span class="nav-number">3.1.</span> <span class="nav-text">事件绑定形式的取消</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#api"><span class="nav-number">4.</span> <span class="nav-text">api</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%93%E4%B8%80%E4%B8%AA%E4%BA%8B%E4%BB%B6%E5%8F%91%E7%94%9F%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E9%BC%A0%E6%A0%87%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%8F%AF%E8%A7%86%E5%8C%BA%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="nav-number">6.</span> <span class="nav-text">当一个事件发生的时候，鼠标到页面可视区的距离</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1"><span class="nav-number">6.1.</span> <span class="nav-text">事件冒泡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%BB%E6%AD%A2%E5%86%92%E6%B3%A1-%E5%BD%93%E5%89%8D%E8%A6%81%E9%98%BB%E6%AD%A2%E5%86%92%E6%B3%A1%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%87%BD%E6%95%B0%E4%B8%AD%E8%B0%83%E7%94%A8"><span class="nav-number">6.2.</span> <span class="nav-text">阻止冒泡: 当前要阻止冒泡的事件函数中调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA%EF%BC%9A%E5%BD%93%E4%B8%80%E4%B8%AA%E4%BA%8B%E4%BB%B6%E5%8F%91%E7%94%9F%E7%9A%84%E6%97%B6%E5%80%99%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%B7%B1%E4%BC%9A%E9%BB%98%E8%AE%A4%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85%EF%BC%9B"><span class="nav-number">6.3.</span> <span class="nav-text">事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E8%AE%A1"><span class="nav-number">6.4.</span> <span class="nav-text">小计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="nav-number">7.</span> <span class="nav-text">事件委托</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E6%BB%9A%E5%8A%A8%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">8.</span> <span class="nav-text">鼠标滚动事件的区别</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xlong-zh"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">xlong-zh</p>
+  <div class="site-description" itemprop="description">coder coder coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xlong-zh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/xlong-zh@outlook.com" title="E-Mail → xlong-zh@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/xlong-zh" title="https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank">github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://gitee.com/xlong-zh" title="https:&#x2F;&#x2F;gitee.com&#x2F;xlong-zh" rel="noopener" target="_blank">gitee</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BOM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-03 15:14:02" itemprop="dateCreated datePublished" datetime="2021-11-03T15:14:02+08:00">2021-11-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-03-07 17:05:00" itemprop="dateModified" datetime="2022-03-07T17:05:00+08:00">2022-03-07</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/html/" itemprop="url" rel="index"><span itemprop="name">html</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="浏览器渲染机制"><a href="#浏览器渲染机制" class="headerlink" title="浏览器渲染机制"></a>浏览器渲染机制</h2><h3 id="渲染机制"><a href="#渲染机制" class="headerlink" title="渲染机制"></a>渲染机制</h3><p>先解析 html 生成 dom 树，再解析 css 生成 css 树，将 dom 和 css 树结合生成 render 树，开始回流解析 render 树，获取每个节点的尺寸和位置信息，根据获取的信息开始重绘将页面渲染到浏览器中；</p>
+<h3 id="重绘和回流"><a href="#重绘和回流" class="headerlink" title="重绘和回流"></a>重绘和回流</h3><h4 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h4><p>DOM 节点的样式信息(颜色背景等)发生改变时，浏览器会重新渲染 dom 节点，这个过程叫做重绘；</p>
+<h4 id="回流"><a href="#回流" class="headerlink" title="回流"></a>回流</h4><p>DOM 节点的位置信息和尺寸信息发生改变时，浏览器会通过重新计算 render 树获取节点的尺寸和位置信息，这个过程就叫回流；</p>
+<h4 id="重绘和回流的关系和优化"><a href="#重绘和回流的关系和优化" class="headerlink" title="重绘和回流的关系和优化"></a>重绘和回流的关系和优化</h4><p>回流一定会发生重绘，重绘不一定会导致回流。回流的开销要大于重绘，所以要尽可能避免多次发生回流，避免操作 dom 时频繁的改变元素的尺寸和位置信息，可以通过修改 class 的形式，一次性修改完毕，在动态生成 dom 节点的时候，也可以拼接好 html 后再做 dom 替换。使用 resize、scroll 时进行防抖和节流处理，这两者会直接导致回流。</p>
+<h1 id="bgc"><a href="#bgc" class="headerlink" title="bgc"></a>bgc</h1><p><img src="/images/bfc.jpg"></p>
+<h1 id="事件绑定多个函数（兼容）："><a href="#事件绑定多个函数（兼容）：" class="headerlink" title="事件绑定多个函数（兼容）："></a>事件绑定多个函数（兼容）：</h1><p>function bind(obj, evname(事件名称), fn(事件函数)) {<br>    if (obj.addEventListener) {<br>        obj.addEventListener(evname, fn, false(是否捕获));<br>    } else {<br>        obj.attachEvent(‘on’ + evname, function() {<br>            fn.call(obj);<br>        });<br>    }<br>}<br>//是否捕获 : 默认是 false； false:冒泡 true：捕获</p>
+<h2 id="事件绑定形式的取消"><a href="#事件绑定形式的取消" class="headerlink" title="事件绑定形式的取消"></a>事件绑定形式的取消</h2><p>Btn.onclick=null //普通绑定<br>ie : obj.detachEvent(事件名称，事件函数);<br>标准 : obj.removeEventListener(事件名称，事件函数，是否捕获);</p>
+<p>备注：<br>ie：obj.attachEvent(事件名称，事件函数);<br>    1.没有捕获<br>    2.事件名称有 on<br>    3.事件函数执行的顺序：标准 ie-》正序 非标准 ie-》倒序<br>    4.this 指向 window<br>标准：obj.addEventListener(事件名称，事件函数，是否捕获);<br>    1.有捕获<br>    2.事件名称没有 on<br>    3.事件执行的顺序是正序<br>    4.this 触发该事件的对象</p>
+<h1 id="api"><a href="#api" class="headerlink" title="api"></a>api</h1><p>window.navigator.userAgent –&gt; 浏览器信息<br>window.location –&gt;浏览器地址信息<br>window.location.href:url<br>window.location.search:url –&gt;?后面的内容<br>window.location.hash:url –&gt;#后面的内容</p>
+<h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>obj.focus() 给指定的元素设置焦点<br>obj.blur() 取消指定元素的焦点<br>obj.select() 选择指定元素里面的文本内容<br>Onfocus 当元素获取到焦点的时候触发<br>onblur 当元素失去焦点的时候触发<br>oncontextmenu 右键菜单事件，当环境菜单显示出来时触发<br>onscroll 当滚动条滚动的时候触发<br>Onresize 当窗口大小发生改变的时候出发<br>onkeydown 当键盘按键按下的时候触发<br>onkeyup 当键盘按键抬起的时候触发<br>event.keyCode 数字类型 键盘按键的值 键值<br>ctrlKey,shiftKey,altKey 布尔值，当一个事件发生的时候，如果 ctrl/shift/alt 是按下的状态，返回 true，否则返回 false</p>
+<h1 id="当一个事件发生的时候，鼠标到页面可视区的距离"><a href="#当一个事件发生的时候，鼠标到页面可视区的距离" class="headerlink" title="当一个事件发生的时候，鼠标到页面可视区的距离"></a>当一个事件发生的时候，鼠标到页面可视区的距离</h1><p>clientX[X] clientX[Y]</p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>当一个元素接收到事件的时候，会把他接收到的所有传播给他的父级，一直到顶层 window.事件冒泡机制</p>
+<h2 id="阻止冒泡-当前要阻止冒泡的事件函数中调用"><a href="#阻止冒泡-当前要阻止冒泡的事件函数中调用" class="headerlink" title="阻止冒泡: 当前要阻止冒泡的事件函数中调用"></a>阻止冒泡: 当前要阻止冒泡的事件函数中调用</h2><p>event.stopPropagation() //停止冒泡<br>event.cancelBubble = true; ie 低版本</p>
+<h2 id="事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；"><a href="#事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；" class="headerlink" title="事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；"></a>事件默认行为：当一个事件发生的时候浏览器自己会默认做的事情；</h2><p>阻止默认行为：return false;<br>return false 阻止的是 obj.on 事件名称=fn 所触发的默认行为；<br>addEventListener 绑定的事件需要通过 event 下面的 preventDefault();<br>ie 低版本阻止事件默认行为：event.returnvalue=false<br>eg:<br>if (ev.preventDefault) {<br>            ev.preventDefault();<br>        }<br>return false;</p>
+<h2 id="小计"><a href="#小计" class="headerlink" title="小计"></a>小计</h2><p>1、event.stopPropagation() //停止冒泡<br>2、IE 低版本事件对象 window.event 停止冒泡 event.cancelBubble=true;<br>3、阻止 a 标签跳转 //阻止事件默认行为 event.preventDefault();<br>4、ie 低版本阻止事件默认行为 event.returnvalue=false</p>
+<h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><p>将事件绑定在祖先元素身上的方式被称为事件委托<br>//原理 利用冒泡的机制，只指定一个事件处理函数就可以管理一类事件，把具体子节点上发生的事情交给更大范围去处理<br>//什么时候使用：子级数量很多的时候 子级动态生成的时候<br>//写法：event.target.nodeName==?<br>event.target.id==?<br>event.target.className==?</p>
+<h1 id="鼠标滚动事件的区别"><a href="#鼠标滚动事件的区别" class="headerlink" title="鼠标滚动事件的区别"></a>鼠标滚动事件的区别</h1><p>ie/chrome : onmousewheel<br>        event.wheelDelta<br>             上：120<br>             下：-120<br>firefox : DOMMouseScroll 必须用 addEventListener<br>        event.detail<br>             上：-3<br>             下：3</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/07/DOM/" rel="next" title="DOM">
+                  DOM <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xlong-zh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

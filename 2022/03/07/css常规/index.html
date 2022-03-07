@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="&amp;nbsp 识别为一个空格 &amp;lt &amp;gt 大小于符号 %copy @ 文本溢出多行文本溢出：word-break: break-all;text-overflow: ellipsis;display: -webkit-box; &#x2F;** 对象作为伸缩盒子模型显示 &#x2F;-webkit-box-orient: vertical; &#x2F; 设置或检索伸缩盒对象的子元素的排列方式 &#x2F;-w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css常规">
+<meta property="og:url" content="http://example.com/2022/03/07/css%E5%B8%B8%E8%A7%84/index.html">
+<meta property="og:site_name" content="xlong-zh&#39;s blog">
+<meta property="og:description" content="&amp;nbsp 识别为一个空格 &amp;lt &amp;gt 大小于符号 %copy @ 文本溢出多行文本溢出：word-break: break-all;text-overflow: ellipsis;display: -webkit-box; &#x2F;** 对象作为伸缩盒子模型显示 &#x2F;-webkit-box-orient: vertical; &#x2F; 设置或检索伸缩盒对象的子元素的排列方式 &#x2F;-w">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/yxsbk.jpg">
+<meta property="article:published_time" content="2022-03-07T02:27:03.707Z">
+<meta property="article:modified_time" content="2022-03-07T08:03:15.937Z">
+<meta property="article:author" content="xlong-zh">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/yxsbk.jpg">
+
+
+<link rel="canonical" href="http://example.com/2022/03/07/css%E5%B8%B8%E8%A7%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/07/css%E5%B8%B8%E8%A7%84/","path":"2022/03/07/css常规/","title":"css常规"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>css常规 | xlong-zh's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xlong-zh's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA"><span class="nav-number">1.</span> <span class="nav-text">文本溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">多行文本溢出：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">单行文本溢出：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%AE%9E%E7%8E%B0%E5%8A%9F%E8%83%BD%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">一些实现功能的语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#background-%E7%AE%80%E5%86%99%E9%A1%BA%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">background 简写顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rem-%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">rem 适配方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%83%8F%E7%B4%A0%E8%BE%B9%E6%A1%86"><span class="nav-number">5.</span> <span class="nav-text">1 像素边框</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A3%81%E5%89%AA%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">裁剪属性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8"><span class="nav-number">7.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80"><span class="nav-number">8.</span> <span class="nav-text">浏览器响应式布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E4%BD%93"><span class="nav-number">9.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%B9%E6%A1%86"><span class="nav-number">10.</span> <span class="nav-text">边框</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xlong-zh"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">xlong-zh</p>
+  <div class="site-description" itemprop="description">coder coder coder</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xlong-zh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/xlong-zh@outlook.com" title="E-Mail → xlong-zh@outlook.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/xlong-zh" title="https:&#x2F;&#x2F;github.com&#x2F;xlong-zh" rel="noopener" target="_blank">github</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://gitee.com/xlong-zh" title="https:&#x2F;&#x2F;gitee.com&#x2F;xlong-zh" rel="noopener" target="_blank">gitee</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/07/css%E5%B8%B8%E8%A7%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="xlong-zh">
+      <meta itemprop="description" content="coder coder coder">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xlong-zh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          css常规
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-03-07 10:27:03 / 修改时间：16:03:15" itemprop="dateCreated datePublished" datetime="2022-03-07T10:27:03+08:00">2022-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>&amp;nbsp 识别为一个空格 &amp;lt &amp;gt 大小于符号 %copy @</p>
+<h1 id="文本溢出"><a href="#文本溢出" class="headerlink" title="文本溢出"></a>文本溢出</h1><h2 id="多行文本溢出："><a href="#多行文本溢出：" class="headerlink" title="多行文本溢出："></a>多行文本溢出：</h2><p>word-break: break-all;<br>text-overflow: ellipsis;<br>display: -webkit-box; /** 对象作为伸缩盒子模型显示 <strong>/<br>-webkit-box-orient: vertical; /</strong> 设置或检索伸缩盒对象的子元素的排列方式 <strong>/<br>-webkit-line-clamp: 2; /</strong> 显示的行数 <strong>/<br>overflow: hidden; /</strong> 隐藏超出的内容 **/</p>
+<h2 id="单行文本溢出："><a href="#单行文本溢出：" class="headerlink" title="单行文本溢出："></a>单行文本溢出：</h2><p>overflow: hidden;<br>text-overflow:ellipsis;<br>white-space: nowrap;</p>
+<h1 id="一些实现功能的语法"><a href="#一些实现功能的语法" class="headerlink" title="一些实现功能的语法"></a>一些实现功能的语法</h1><ol>
+<li>针对节点新增 class 并且不覆盖原有 clas<br>item.classList.add(“”);</li>
+<li>针对节点删除固定 class 并且不影响原有 clas<br>item.classList.remove(“”);</li>
+<li>判断一个节点是否有某个 class 属性<br>item.classList.contains(“red”)<br>classList.toggle 是有这个类就删除 没有就添加</li>
+</ol>
+<h1 id="background-简写顺序"><a href="#background-简写顺序" class="headerlink" title="background 简写顺序"></a>background 简写顺序</h1><p>background-color background-image background-repeat background-attachment background-position</p>
+<h1 id="rem-适配方案"><a href="#rem-适配方案" class="headerlink" title="rem 适配方案"></a>rem 适配方案</h1><p>window.onload = function () {<br>            /<em>720 代表设计师给的设计稿的宽度，你的设计稿是多少，就写多少;100 代表换算比例，这里写 100 是<br>               为了以后好算,比如，你测量的一个宽度是 100px,就可以写为 1rem,以及 1px=0.01rem 等等</em>/<br>            getRem(720, 100)<br>        };<br>        window.onresize = function () {<br>            getRem(720, 100)<br>        };<br>        function getRem(pwidth, prem) {<br>            var html = document.getElementsByTagName(“html”)[0];<br>            var oWidth = document.body.clientWidth || document.documentElement.clientWidth;<br>            html.style.fontSize = oWidth / pwidth * prem + “px”;<br>        }</p>
+<h1 id="1-像素边框"><a href="#1-像素边框" class="headerlink" title="1 像素边框"></a>1 像素边框</h1><p><img src="/images/yxsbk.jpg"></p>
+<h1 id="裁剪属性"><a href="#裁剪属性" class="headerlink" title="裁剪属性"></a>裁剪属性</h1><p>图片裁剪为菱形<br>mg {<br>clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);<br>}</p>
+<h1 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h1><p>.clearfix:after{/<em>伪元素是行内元素 正常浏览器清除浮动方法</em>/<br>content: “”;<br> display: block;<br>height: 0;<br>clear:both;<br>visibility: hidden;<br>}<br>.clearfix{<br>*zoom: 1;/*ie6 清除浮动的方式 <em>号只有 IE6-IE7 执行，其他浏览器不执行</em>/<br>}</p>
+<h1 id="浏览器响应式布局"><a href="#浏览器响应式布局" class="headerlink" title="浏览器响应式布局"></a>浏览器响应式布局</h1><p>1、em 具有继承性 浏览器文字默认 16px 1em=16px<br>2@media 属性「媒体查询」，称为响应式布局 1)语法 @media screen and（max-width：1000px；）<br>2）如果尺寸样式样式很多，需要不同的 css 去外联，此时需要在引用的时候添加判断条件，以免浏览器以此读取 css 样式，语法：<link rel="stylesheet" href="./max1000.css" media="sceren and (max-width:1000px)"></p>
+<h1 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h1><p>1、font-size:定义字符框高度（不要写奇数）可以继承 有预设值 尽量大于 12 不要有小数点<br>2、font-weight:加粗字体 可以定义属性值为 bold ，也可以为数值<br>3、font-style：控制文字倾斜 normal 为不倾斜 italic 为倾斜<br>4、letter-spacing:10px; 文字的间隙为 10 个像素 字符和字符之间<br>5、word-spacing：xx px；词间距 通过空格键去识别<br>5、text-indent:xx px;首行缩进 em px<br>6、font-family：“宋体”，“黑体”；（谨慎使用 版权问题）</p>
+<h1 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h1><p>1、border-radius 设置圆形边框<br>2、background-img 背景图片<br>3、background-repeat 设置图片重复方式 实现自适应？ 见第五条<br>4、background-position 可以取 xy 的值 也可以取 left right bottom middle<br>5、background-size：（contain）/（cover）。数字 数字。 100% auto<br>6、background-attachment：fixed；背景图片固定化不动<br>7、bgc 的简写顺序：颜色 路径 平铺方式 位置<br>8、background：linear-gradient（颜色 1 颜色 2）/（to right 颜色 1 颜色 2）实现渐变效果<br>9、background-color{ 声明颜色后尾部加一个数字 是透明度 0.5 代表 50%}透明度<br>10、box-shadow：5px 10px 10px 颜色。 盒子阴影 模糊程度 外延【x-y】 颜色 阴影不占像素<br>11、text-shadow：与 boxshadow 写法一样 没有外延<br>12、display：none； visibility:hidden;</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/07/js%E5%9F%BA%E7%A1%80/" rel="prev" title="js基础">
+                  <i class="fa fa-chevron-left"></i> js基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/03/07/zd%E7%BB%88%E7%AB%AF%E6%8C%87%E4%BB%A4/" rel="next" title="终端指令">
+                  终端指令 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xlong-zh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
